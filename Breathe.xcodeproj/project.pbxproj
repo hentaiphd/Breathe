@@ -266,6 +266,7 @@
 		53F0E8FF17400B240087962C /* cpVect.c in Sources */ = {isa = PBXBuildFile; fileRef = 53F0E8FE17400B240087962C /* cpVect.c */; };
 		53F0E90617400B240087962C /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 53F0E90517400B240087962C /* AppDelegate.cpp */; };
 		53F0E90917400B240087962C /* HelloWorldScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 53F0E90817400B240087962C /* HelloWorldScene.cpp */; };
+		AACD457E1740166F006281D4 /* TouchManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AACD457C1740166F006281D4 /* TouchManager.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -832,6 +833,8 @@
 		53F0E90517400B240087962C /* AppDelegate.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AppDelegate.cpp; path = Classes/AppDelegate.cpp; sourceTree = "<group>"; };
 		53F0E90717400B240087962C /* HelloWorldScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HelloWorldScene.h; path = Classes/HelloWorldScene.h; sourceTree = "<group>"; };
 		53F0E90817400B240087962C /* HelloWorldScene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = HelloWorldScene.cpp; path = Classes/HelloWorldScene.cpp; sourceTree = "<group>"; };
+		AACD457C1740166F006281D4 /* TouchManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TouchManager.cpp; path = Classes/TouchManager.cpp; sourceTree = "<group>"; };
+		AACD457D1740166F006281D4 /* TouchManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TouchManager.h; path = Classes/TouchManager.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1980,6 +1983,8 @@
 				53F0E90517400B240087962C /* AppDelegate.cpp */,
 				53F0E90717400B240087962C /* HelloWorldScene.h */,
 				53F0E90817400B240087962C /* HelloWorldScene.cpp */,
+				AACD457C1740166F006281D4 /* TouchManager.cpp */,
+				AACD457D1740166F006281D4 /* TouchManager.h */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -2293,6 +2298,7 @@
 				53F0E8FF17400B240087962C /* cpVect.c in Sources */,
 				53F0E90617400B240087962C /* AppDelegate.cpp in Sources */,
 				53F0E90917400B240087962C /* HelloWorldScene.cpp in Sources */,
+				AACD457E1740166F006281D4 /* TouchManager.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2430,6 +2436,7 @@
 				53F0E90E17400B240087962C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

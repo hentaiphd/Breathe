@@ -30,7 +30,26 @@ bool HelloWorld::init()
     }    
     this->setTouchEnabled(true);
     
+    leftTouch = NULL;
+    rightTouch = NULL;
+    
+    this->schedule(schedule_selector(HelloWorld::tick), .0001);
+    
     return true;
+}
+
+void HelloWorld::tick(float dt){
+    static int frameCount = 0;
+    if(leftTouch != NULL && rightTouch != NULL){
+        CCPoint leftTouchLocation = leftTouch->getLocationInView();
+        leftTouchLocation = CCDirector::sharedDirector()->convertToGL(leftTouchLocation);
+        CCPoint rightTouchLocation = rightTouch->getLocationInView();
+        rightTouchLocation = CCDirector::sharedDirector()->convertToGL(rightTouchLocation);
+        if(abs(rightTouchLocation.y - leftTouchLocation.y) < 50){
+            printf("%d: synched\n", frameCount);
+        }
+    }
+    frameCount++;
 }
 
 void HelloWorld::ccTouchesBegan(CCSet *touches, CCEvent *event){
@@ -38,7 +57,23 @@ void HelloWorld::ccTouchesBegan(CCSet *touches, CCEvent *event){
         CCTouch *touch = (CCTouch *)*it;
         CCPoint touchLocation = touch->getLocationInView();
         touchLocation = CCDirector::sharedDirector()->convertToGL(touchLocation);
-        printf("%0.2f x %0.2f\n",touchLocation.x,touchLocation.y);
+        //printf("%0.2f x %0.2f\n",touchLocation.x,touchLocation.y);
+        
+        if (leftTouch == NULL) {
+            if (touchLocation.x < this->boundingBox().getMidX() &&
+                this->boundingBox().getMinX() + 100 > touchLocation.x) {
+                leftTouch = touch;
+                //printf("got left touch\n");
+            }
+        }
+        
+        if(rightTouch == NULL){
+            if(touchLocation.x > this->boundingBox().getMidX() &&
+               this->boundingBox().getMaxX() - 100 < touchLocation.x){
+                rightTouch = touch;
+                //printf("got right touch\n");
+            }
+        }
     }
 }
 
@@ -47,6 +82,7 @@ void HelloWorld::ccTouchesMoved(CCSet *touches, CCEvent *event){
         CCTouch *touch = (CCTouch *)*it;
         CCPoint touchLocation = touch->getLocationInView();
         touchLocation = CCDirector::sharedDirector()->convertToGL(touchLocation);
+        //printf("%0.2f x %0.2f\n",touchLocation.x,touchLocation.y);
     }
 }
 
@@ -55,6 +91,14 @@ void HelloWorld::ccTouchesEnded(CCSet *touches, CCEvent *event){
         CCTouch *touch = (CCTouch *)*it;
         CCPoint touchLocation = touch->getLocationInView();
         touchLocation = CCDirector::sharedDirector()->convertToGL(touchLocation);
+        
+        if(touch == leftTouch){
+            leftTouch = NULL;
+        }
+        
+        if(touch == rightTouch){
+            rightTouch = NULL;
+        }
     }
 }
 
