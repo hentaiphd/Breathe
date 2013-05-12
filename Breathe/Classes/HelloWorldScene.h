@@ -21,10 +21,13 @@ public:
     virtual void ccTouchesBegan(CCSet *touches, CCEvent *event);
     virtual void ccTouchesMoved(CCSet *touches, CCEvent *event);
     virtual void ccTouchesEnded(CCSet *touches, CCEvent *event);
+    virtual void draw();
 
     // preprocessor macro for "static create()" constructor ( node() deprecated )
     CREATE_FUNC(HelloWorld);
     CCTouch* leftTouch,*rightTouch;
+    
+    float lineHeight;
 };
 
 #endif // __HELLOWORLD_SCENE_H__

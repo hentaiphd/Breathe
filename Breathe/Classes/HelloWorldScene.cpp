@@ -45,11 +45,17 @@ void HelloWorld::tick(float dt){
         leftTouchLocation = CCDirector::sharedDirector()->convertToGL(leftTouchLocation);
         CCPoint rightTouchLocation = rightTouch->getLocationInView();
         rightTouchLocation = CCDirector::sharedDirector()->convertToGL(rightTouchLocation);
-        if(abs(rightTouchLocation.y - leftTouchLocation.y) < 50){
+        if(abs(rightTouchLocation.y - leftTouchLocation.y) < 50 && abs(rightTouchLocation.y-lineHeight) < 50){
             printf("%d: synched\n", frameCount);
         }
     }
+    lineHeight = sin(frameCount*.01)*(this->boundingBox().getMidY())+this->boundingBox().getMidY();
     frameCount++;
+}
+
+void HelloWorld::draw(){
+    ccDrawLine(CCPoint(this->boundingBox().getMinX(), lineHeight),
+               CCPoint(this->boundingBox().getMaxX(), lineHeight));
 }
 
 void HelloWorld::ccTouchesBegan(CCSet *touches, CCEvent *event){
