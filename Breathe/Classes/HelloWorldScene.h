@@ -27,7 +27,7 @@ public:
     CREATE_FUNC(HelloWorld);
     CCTouch* leftTouch,*rightTouch;
     
-    float lineHeight;
+    float lineHeight, agitationIndex;
 };
 
 #endif // __HELLOWORLD_SCENE_H__

@@ -34,6 +34,8 @@ bool HelloWorld::init()
     leftTouch = NULL;
     rightTouch = NULL;
     
+    agitationIndex = 500;
+    
     this->schedule(schedule_selector(HelloWorld::tick), .0001);
     
     return true;
@@ -50,7 +52,7 @@ void HelloWorld::tick(float dt){
             printf("%d: synched\n", frameCount);
         }
     }
-    lineHeight = sin(frameCount*.01*PerlinNoise::noise(frameCount*.005, 0))*(this->boundingBox().getMidY())+this->boundingBox().getMidY();
+    lineHeight = abs(sin(frameCount*.01)*(this->boundingBox().getMaxY()*PerlinNoise::noise(frameCount*.00001*agitationIndex, 10)));
     frameCount++;
 }
 
