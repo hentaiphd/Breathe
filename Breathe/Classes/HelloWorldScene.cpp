@@ -1,5 +1,6 @@
 #include "HelloWorldScene.h"
 #include "SimpleAudioEngine.h"
+#include "PerlinNoise.h"
 
 using namespace cocos2d;
 using namespace CocosDenshion;
@@ -49,7 +50,7 @@ void HelloWorld::tick(float dt){
             printf("%d: synched\n", frameCount);
         }
     }
-    lineHeight = sin(frameCount*.01)*(this->boundingBox().getMidY())+this->boundingBox().getMidY();
+    lineHeight = sin(frameCount*.01*PerlinNoise::noise(frameCount*.005, 0))*(this->boundingBox().getMidY())+this->boundingBox().getMidY();
     frameCount++;
 }
 
