@@ -27,6 +27,7 @@ public:
     CREATE_FUNC(HelloWorld);
     CCTouch* leftTouch,*rightTouch;
     
+    int frameCount;
     float lineHeight, agitationIndex;
 };
 

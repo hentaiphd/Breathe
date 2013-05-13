@@ -42,7 +42,6 @@ bool HelloWorld::init()
 }
 
 void HelloWorld::tick(float dt){
-    static int frameCount = 0;
     if(leftTouch != NULL && rightTouch != NULL){
         CCPoint leftTouchLocation = leftTouch->getLocationInView();
         leftTouchLocation = CCDirector::sharedDirector()->convertToGL(leftTouchLocation);
@@ -53,12 +52,18 @@ void HelloWorld::tick(float dt){
         }
     }
     lineHeight = abs(sin(frameCount*.01)*(this->boundingBox().getMaxY()*PerlinNoise::noise(frameCount*.00001*agitationIndex, 10)));
+    lineHeight = 50;
     frameCount++;
 }
 
 void HelloWorld::draw(){
-    ccDrawLine(CCPoint(this->boundingBox().getMinX(), lineHeight),
-               CCPoint(this->boundingBox().getMaxX(), lineHeight));
+    static int iter = 0;
+    for(int j = 0; j < 6; j++){
+        for(int i = 0; i < 500; i++){
+            ccDrawPoint(CCPoint(i, lineHeight+(50*j)+((500-i)*.4)*PerlinNoise::noise((i*.3+iter)*.03, 10*j)));
+        }
+    }
+    iter++;
 }
 
 void HelloWorld::ccTouchesBegan(CCSet *touches, CCEvent *event){
