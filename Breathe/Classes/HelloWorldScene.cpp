@@ -60,7 +60,7 @@ void HelloWorld::draw(){
     static int iter = 0;
     for(int j = 0; j < 6; j++){
         for(int i = 0; i < 500; i++){
-            ccDrawPoint(CCPoint(i, lineHeight+(50*j)+((500-i)*.4)*PerlinNoise::noise((i*.3+iter)*.03, 10*j)));
+            ccDrawPoint(CCPoint(i+.03*(500-i)*PerlinNoise::noise((i+iter)*.03, 10*j), lineHeight+(50*j)+((500-i)*.4)*PerlinNoise::noise((i*.3+iter)*.03, 10*j)));
         }
     }
     iter++;
