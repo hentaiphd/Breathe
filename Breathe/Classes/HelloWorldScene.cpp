@@ -79,7 +79,11 @@ void HelloWorld::tick(float dt){
     static int iter = 0;
     for(int j = 0; j < 6; j++){
         for(int i = 0; i < texture->getContentSize().width; i++){
-            ccColor4B color = ccc4(255, 255, 255, 255);
+            float width = 127+10*PerlinNoise::noise(i*.1+iter, i*.1+iter);
+            float red = sin(.3*i + 0) * width + 128;
+            float grn = sin(.3*i + 2) * width + 128;
+            float blu = sin(.3*i + 4) * width + 128;
+            ccColor4B color = ccc4(red, grn, blu, 255);
             texture->setPixelAt(CCPoint(i+.03*(texture->getContentSize().width-i)*PerlinNoise::noise((i+iter)*.03, 10*j),
                                         lineHeight+(j*(texture->getContentSize().height/6))+((texture->getContentSize().width-i)*.4)*
                                         PerlinNoise::noise((i*.7+iter)*.03, 10*j)),
