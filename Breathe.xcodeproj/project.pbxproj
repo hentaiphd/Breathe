@@ -266,6 +266,7 @@
 		53F0E8FF17400B240087962C /* cpVect.c in Sources */ = {isa = PBXBuildFile; fileRef = 53F0E8FE17400B240087962C /* cpVect.c */; };
 		53F0E90617400B240087962C /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 53F0E90517400B240087962C /* AppDelegate.cpp */; };
 		53F0E90917400B240087962C /* HelloWorldScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 53F0E90817400B240087962C /* HelloWorldScene.cpp */; };
+		AA3E365C1741BF200071256E /* CCTexture2DMutable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA3E365A1741BF200071256E /* CCTexture2DMutable.cpp */; };
 		AACD457E1740166F006281D4 /* TouchManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AACD457C1740166F006281D4 /* TouchManager.cpp */; };
 		AACD4581174028CF006281D4 /* PerlinNoise.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AACD457F174028CF006281D4 /* PerlinNoise.cpp */; };
 /* End PBXBuildFile section */
@@ -834,6 +835,8 @@
 		53F0E90517400B240087962C /* AppDelegate.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AppDelegate.cpp; path = Classes/AppDelegate.cpp; sourceTree = "<group>"; };
 		53F0E90717400B240087962C /* HelloWorldScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HelloWorldScene.h; path = Classes/HelloWorldScene.h; sourceTree = "<group>"; };
 		53F0E90817400B240087962C /* HelloWorldScene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = HelloWorldScene.cpp; path = Classes/HelloWorldScene.cpp; sourceTree = "<group>"; };
+		AA3E365A1741BF200071256E /* CCTexture2DMutable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CCTexture2DMutable.cpp; path = Classes/CCTexture2DMutable.cpp; sourceTree = "<group>"; };
+		AA3E365B1741BF200071256E /* CCTexture2DMutable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCTexture2DMutable.h; path = Classes/CCTexture2DMutable.h; sourceTree = "<group>"; };
 		AACD457C1740166F006281D4 /* TouchManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TouchManager.cpp; path = Classes/TouchManager.cpp; sourceTree = "<group>"; };
 		AACD457D1740166F006281D4 /* TouchManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TouchManager.h; path = Classes/TouchManager.h; sourceTree = "<group>"; };
 		AACD457F174028CF006281D4 /* PerlinNoise.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PerlinNoise.cpp; path = Classes/PerlinNoise.cpp; sourceTree = "<group>"; };
@@ -1982,6 +1985,8 @@
 		53F0E90317400B240087962C /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				AA3E365A1741BF200071256E /* CCTexture2DMutable.cpp */,
+				AA3E365B1741BF200071256E /* CCTexture2DMutable.h */,
 				53F0E90417400B240087962C /* AppDelegate.h */,
 				53F0E90517400B240087962C /* AppDelegate.cpp */,
 				53F0E90717400B240087962C /* HelloWorldScene.h */,
@@ -2305,6 +2310,7 @@
 				53F0E90917400B240087962C /* HelloWorldScene.cpp in Sources */,
 				AACD457E1740166F006281D4 /* TouchManager.cpp in Sources */,
 				AACD4581174028CF006281D4 /* PerlinNoise.cpp in Sources */,
+				AA3E365C1741BF200071256E /* CCTexture2DMutable.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

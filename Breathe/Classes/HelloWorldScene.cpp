@@ -36,6 +36,26 @@ bool HelloWorld::init()
     
     agitationIndex = 500;
     
+    CCSize texSize = CCSizeMake(this->boundingBox().getMaxX()/6, this->boundingBox().getMaxY()/6);
+    int bytes = texSize.width * texSize.height * 4;
+    void* textureData = malloc(bytes);
+    memset(textureData, INT32_MAX, bytes);
+    
+    texture = new CCTexture2DMutable();
+    if (!texture->initWithData(textureData, kCCTexture2DPixelFormat_RGBA8888, texSize.width, texSize.height, texSize)) {
+        CCLOG("Could not create texture");
+        delete texture;
+        texture = NULL;
+    }
+    
+    texture->setAliasTexParameters();
+    
+    renderSprite = new CCSprite();
+    renderSprite->initWithTexture(texture);
+    renderSprite->setPosition(CCPoint(this->boundingBox().getMidX(), this->boundingBox().getMidY()));
+    this->addChild(renderSprite);
+    texture->retain();
+    
     this->schedule(schedule_selector(HelloWorld::tick), .0001);
     
     return true;
@@ -52,18 +72,25 @@ void HelloWorld::tick(float dt){
         }
     }
     lineHeight = abs(sin(frameCount*.01)*(this->boundingBox().getMaxY()*PerlinNoise::noise(frameCount*.00001*agitationIndex, 10)));
-    lineHeight = 50;
+    lineHeight = 0;
     frameCount++;
-}
-
-void HelloWorld::draw(){
+    
+    texture->fill(ccc4(0, 0, 0, 0));
     static int iter = 0;
     for(int j = 0; j < 6; j++){
-        for(int i = 0; i < 500; i++){
-            ccDrawPoint(CCPoint(i+.03*(500-i)*PerlinNoise::noise((i+iter)*.03, 10*j), lineHeight+(50*j)+((500-i)*.4)*PerlinNoise::noise((i*.3+iter)*.03, 10*j)));
+        for(int i = 0; i < texture->getContentSize().width; i++){
+            ccColor4B color = ccc4(255, 255, 255, 255);
+            texture->setPixelAt(CCPoint(i+.03*(texture->getContentSize().width-i)*PerlinNoise::noise((i+iter)*.03, 10*j),
+                                        lineHeight+(j*(texture->getContentSize().height/6))+((texture->getContentSize().width-i)*.4)*
+                                        PerlinNoise::noise((i*.7+iter)*.03, 10*j)),
+                                color);
         }
     }
     iter++;
+    texture->apply();
+    
+    renderSprite->initWithTexture(texture);
+    renderSprite->setScale(6);
 }
 
 void HelloWorld::ccTouchesBegan(CCSet *touches, CCEvent *event){

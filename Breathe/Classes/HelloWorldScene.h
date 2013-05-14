@@ -1,6 +1,7 @@
 #ifndef __HELLOWORLD_SCENE_H__
 #define __HELLOWORLD_SCENE_H__
 
+#include "CCTexture2DMutable.h"
 #include "cocos2d.h"
 using namespace cocos2d;
 
@@ -21,11 +22,12 @@ public:
     virtual void ccTouchesBegan(CCSet *touches, CCEvent *event);
     virtual void ccTouchesMoved(CCSet *touches, CCEvent *event);
     virtual void ccTouchesEnded(CCSet *touches, CCEvent *event);
-    virtual void draw();
 
     // preprocessor macro for "static create()" constructor ( node() deprecated )
     CREATE_FUNC(HelloWorld);
     CCTouch* leftTouch,*rightTouch;
+    CCTexture2DMutable *texture;
+    CCSprite *renderSprite;
     
     int frameCount;
     float lineHeight, agitationIndex;
